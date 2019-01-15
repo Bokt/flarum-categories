@@ -1,0 +1,40 @@
+{
+    "name": "bokt/flarum-categories",
+    "description": "Old school hierarchical categories",
+    "keywords": [
+        "extension",
+        "flarum", "bokt",
+        "categories", "category"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniël Klabbers",
+            "email": "daniel@klabbers.email",
+            "homepage": "http://luceos.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/bokt/flarum-categories/issues",
+        "source": "https://github.com/bokt/flarum-categories"
+    },
+    "require": {
+        "flarum/core": "0.1.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bokt\\Categories\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Categories",
+            "icon": {
+                "name": "fas fa-th-list",
+                "backgroundColor": "#EBF1FD",
+                "color": "#3a98d0"
+            }
+        }
+    }
+}
