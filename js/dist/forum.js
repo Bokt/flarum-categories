@@ -130,19 +130,22 @@ function _inheritsLoose(subClass, superClass) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_extend__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! flarum/extend */ "flarum/extend");
 /* harmony import */ var flarum_extend__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(flarum_extend__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var flarum_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flarum/app */ "flarum/app");
-/* harmony import */ var flarum_app__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flarum_app__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _pages_CategoriesPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/CategoriesPage */ "./src/forum/pages/CategoriesPage.js");
+/* harmony import */ var _pages_CategoriesPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/CategoriesPage */ "./src/forum/pages/CategoriesPage.js");
+/* harmony import */ var flarum_Model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flarum/Model */ "flarum/Model");
+/* harmony import */ var flarum_Model__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flarum_Model__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var flarum_tags_models_Tag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! flarum/tags/models/Tag */ "flarum/tags/models/Tag");
+/* harmony import */ var flarum_tags_models_Tag__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flarum_tags_models_Tag__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
-flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.initializers.add('bokt-categories', function () {
-  flarum_app__WEBPACK_IMPORTED_MODULE_1___default.a.routes.categories = {
+
+app.initializers.add('bokt-categories', function (app) {
+  app.routes.categories = {
     path: '/categories',
-    component: _pages_CategoriesPage__WEBPACK_IMPORTED_MODULE_2__["default"].component()
+    component: _pages_CategoriesPage__WEBPACK_IMPORTED_MODULE_1__["default"].component()
   };
-  ;
-});
+  flarum_tags_models_Tag__WEBPACK_IMPORTED_MODULE_3___default.a.prototype.hasChild = flarum_Model__WEBPACK_IMPORTED_MODULE_2___default.a.attribute('hasChild');
+}, -50);
 
 /***/ }),
 
@@ -180,11 +183,9 @@ function (_Page) {
   var _proto = CategoriesPage.prototype;
 
   _proto.init = function init() {
-    _Page.prototype.init.call(this);
+    _Page.prototype.init.call(this); // this.tags = sortTags(app.store.all('tags').filter(tag => tag.isChild() == false));
 
-    this.tags = flarum_tags_utils_sortTags__WEBPACK_IMPORTED_MODULE_3___default()(app.store.all('tags').filter(function (tag) {
-      return tag.isChild() == false;
-    }));
+
     this.secondary = flarum_tags_utils_sortTags__WEBPACK_IMPORTED_MODULE_3___default()(app.store.all('tags').filter(function (tag) {
       return tag.hasChild() == false && tag.isChild() == false;
     }));
@@ -209,14 +210,14 @@ function (_Page) {
 
 /***/ }),
 
-/***/ "flarum/app":
-/*!********************************************!*\
-  !*** external "flarum.core.compat['app']" ***!
-  \********************************************/
+/***/ "flarum/Model":
+/*!**********************************************!*\
+  !*** external "flarum.core.compat['Model']" ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = flarum.core.compat['app'];
+module.exports = flarum.core.compat['Model'];
 
 /***/ }),
 
@@ -250,6 +251,17 @@ module.exports = flarum.core.compat['components/Page'];
 /***/ (function(module, exports) {
 
 module.exports = flarum.core.compat['extend'];
+
+/***/ }),
+
+/***/ "flarum/tags/models/Tag":
+/*!********************************************************!*\
+  !*** external "flarum.core.compat['tags/models/Tag']" ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = flarum.core.compat['tags/models/Tag'];
 
 /***/ }),
 

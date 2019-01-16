@@ -1,7 +1,10 @@
 import {extend} from 'flarum/extend';
-import app from 'flarum/app';
 import CategoriesPage from './pages/CategoriesPage';
+import Model from 'flarum/Model';
+import Tag from 'flarum/tags/models/Tag';
 
-app.initializers.add('bokt-categories', () => {
-    app.routes.categories = {path: '/categories', component: CategoriesPage.component()};;
-});
+app.initializers.add('bokt-categories', app => {
+    app.routes.categories = {path: '/categories', component: CategoriesPage.component()};
+
+    Tag.prototype.hasChild = Model.attribute('hasChild');
+}, -50);
