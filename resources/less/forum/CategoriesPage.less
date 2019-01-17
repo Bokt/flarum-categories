@@ -1,14 +1,47 @@
 .CategoryIndexPage {
     width: 100%;
 
-    .container {
+    .Categories {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex: auto;
 
         .Heading {
         }
-        .Forum {
+        .Category {
+            display: flex;
+            flex-direction: row;
+            border-left: @categories-rows-border;
+            border-right: @categories-rows-border;
+            border-top: @categories-rows-border;
+
+            border-radius: @categories-rows-radius;
+
+            & + & {
+                border-bottom: 0;
+            }
+
+            &:last-of-type {
+                border-bottom: @categories-rows-border;
+            }
+
+            > div:first-child {
+                display: flex;
+                flex-grow: 1;
+            }
+            > div {
+                padding: @categories-rows-padding;
+
+                > .icon:first-child {
+                    padding-right: 5px;
+                    color: @muted-color;
+                }
+            }
+
+            > Category--LastDiscussion {
+                display: flex;
+                flex-direction: column;
+            }
         }
     }
 }

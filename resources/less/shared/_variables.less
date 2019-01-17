@@ -1,0 +1,14 @@
+@categories-rounded-rows: true;
+@categories-rounding: 1em;
+
+.define-categories-rows(@categories-rounded-rows);
+.define-categories-rows(true) {
+    @categories-rows-border: 1px solid @hero-bg;
+    @categories-rows-radius: @border-radius;
+}
+.define-categories-rows(false) {
+    @categories-rows-border: 0;
+    @categories-rows-radius: 0;
+}
+
+@categories-rows-padding: 1em;

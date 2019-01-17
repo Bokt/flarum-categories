@@ -7,4 +7,7 @@ app.initializers.add('bokt-categories', app => {
     app.routes.categories = {path: '/categories', component: CategoriesPage.component()};
 
     Tag.prototype.hasChild = Model.attribute('hasChild');
+    Tag.prototype.discussionCount = Model.attribute('discussionCount');
+    Tag.prototype.commentCount = Model.attribute('commentCount');
+    Tag.prototype.participantCount = Model.attribute('participantCount');
 }, -50);
