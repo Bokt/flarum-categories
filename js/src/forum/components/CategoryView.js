@@ -53,8 +53,8 @@ export default class CategoryView extends Component {
                     (
                         <div className="Title">{discussion.title()}</div>,
                         <div className="DateAuthor DiscussionListItem-info">{user
-                            ? <span>{user.displayName()} replied {humanTime(discussion.lastPostedAt())}</span>
-                            : <span>{author.displayName()} created {humanTime(discussion.createdAt())}</span>}
+                            ? <a href={app.route.discussion(discussion, discussion.lastReadPostNumber())}>{user.displayName()} replied {humanTime(discussion.lastPostedAt())}</a>
+                            : <a href={app.route.discussion(discussion)}>{author.displayName()} created {humanTime(discussion.createdAt())}</a>}
                         </div>
                     ) :
                     '-'

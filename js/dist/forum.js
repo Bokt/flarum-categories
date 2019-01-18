@@ -196,7 +196,11 @@ function (_Component) {
       className: "Title"
     }, discussion.title()), m("div", {
       className: "DateAuthor DiscussionListItem-info"
-    }, user ? m("span", null, user.displayName(), " replied ", flarum_helpers_humanTime__WEBPACK_IMPORTED_MODULE_4___default()(discussion.lastPostedAt())) : m("span", null, author.displayName(), " created ", flarum_helpers_humanTime__WEBPACK_IMPORTED_MODULE_4___default()(discussion.createdAt())))) : '-');
+    }, user ? m("a", {
+      href: app.route.discussion(discussion, discussion.lastReadPostNumber())
+    }, user.displayName(), " replied ", flarum_helpers_humanTime__WEBPACK_IMPORTED_MODULE_4___default()(discussion.lastPostedAt())) : m("a", {
+      href: app.route.discussion(discussion)
+    }, author.displayName(), " created ", flarum_helpers_humanTime__WEBPACK_IMPORTED_MODULE_4___default()(discussion.createdAt())))) : '-');
   };
 
   return CategoryView;
