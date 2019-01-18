@@ -7,8 +7,7 @@ export default class CategoriesPage extends Page {
     init() {
         super.init();
 
-        this.tags = sortTags(app.store.all('tags').filter(tag => tag.isChild() === false));
-        this.secondary = sortTags(app.store.all('tags').filter(tag => tag.hasChild() === false && tag.isChild() === false));
+        this.tags = sortTags(app.store.all('tags').filter(tag => tag.isPrimary() && ! tag.isHidden()));
     }
 
     view() {
@@ -17,9 +16,20 @@ export default class CategoriesPage extends Page {
                 {IndexPage.prototype.hero()}
                 <div class="container">
                     <div className="Categories">
-                        {this.tags.map(tag => CategoryView.component({tag}))}
+                        {this.tags.map(tag => this.categoryView(tag))}
                     </div>
                 </div>
+            </div>
+        );
+    }
+
+    categoryView(tag) {
+        const subTags = sortTags(app.store.all('tags').filter(sub => sub.isChild() && ! sub.isHidden() && sub.parent() == tag));
+
+        return (
+            <div className={'Primary-Category Primary-Category--' + tag.slug()}>
+                {CategoryView.component({tag})}
+                {subTags.map(sub => CategoryView.component({tag: sub}))}
             </div>
         );
     }

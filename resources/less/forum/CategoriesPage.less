@@ -24,10 +24,18 @@
             &:last-of-type {
                 border-bottom: @categories-rows-border;
             }
-
-            > div:first-child {
+            > div.Category--Child {
+                width: 10px;
+                padding: 1em 0.5em;
+                color: @control-bg;
+            }
+            > div.Category--Name {
                 display: flex;
                 flex-grow: 1;
+                width: 100%;
+            }
+            > div:last-child {
+                width: 30%;
             }
             > div {
                 padding: @categories-rows-padding;
@@ -36,6 +44,7 @@
                     padding-right: 5px;
                     color: @muted-color;
                 }
+                width: 10%;
             }
 
             > Category--LastDiscussion {
