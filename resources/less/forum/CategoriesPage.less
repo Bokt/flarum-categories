@@ -8,8 +8,13 @@
         flex-direction: column;
         flex: auto;
 
+        .Primary-Category {
+            margin-bottom: .5em;
+        }
+
         .Heading {
         }
+        
         .Category {
             display: flex;
             flex-direction: row;
@@ -25,7 +30,6 @@
 
             &:last-of-type {
                 border-bottom: @categories-rows-border;
-                margin-bottom: .5em;
             }
             > div.Category--Child {
                 width: 10px;
